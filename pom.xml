@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.atul.esloader</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ElasticsearchClassLoader</name>
+  <description>The purpose of this project is to demonstrate how an application can work with both elasticsearch 1.x and 2.x client jars</description>
+  <artifactId>ElasticsearchClassLoader</artifactId>
+  <packaging>pom</packaging>
+  
+	<modules>
+		<module>ESCommon</module>
+		<module>ESv1</module>
+		<module>ESv2</module>
+		<module>MainProject</module>
+  </modules>
+</project>

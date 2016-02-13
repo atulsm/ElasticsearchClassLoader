@@ -5,7 +5,6 @@ The purpose of this project is to demonstrate how an application can work with b
 
 * MainProject:
   * MainClass.java  (which executes business logic)
-  * CustomClassLoader (which loads specific jar ahead of parent classloader)
 
 * ESCommon:
   * ElasticSearchInterface
@@ -17,18 +16,30 @@ The purpose of this project is to demonstrate how an application can work with b
   * ElasticSearchV2 implements BaseInterface
 
 * command-line:
-  * java -classpath ESCommon.jar MainClass
+  * java -cp ESCommon.jar MainClass
   * //Do not put ESv1 nor ESv1 into the parent classloader classpath
 
 * MainClass Logic:
-  * loader1 = new CustomClassLoader(new URL[] {new File("ESv1.jar").toURL()}, Thread.currentThread().getContextClassLoader());
-  * loader2 = new CustomClassLoader(new URL[] {new File("ESv2.jar").toURL()}, Thread.currentThread().getContextClassLoader());
-  
-  * Class<?> c1 = loader1.loadClass("com.atul.esloader.ElasticSearchV1");
-  * Class<?> c2 = loader2.loadClass("com.atul.esloader.ElasticSearchV2");
 
-  * ElasticSearchInterface es1 = (ElasticSearchInterface) c1.newInstance();
-  * ElasticSearchInterface es2 = (ElasticSearchInterface) c2.newInstance();
+      	public static void main(String[] args) throws Exception {
+    	    ClassLoader loader1 = new URLClassLoader(new URL[] {new File("..\\ESv1\\target\\ESv1-0.0.1-SNAPSHOT.jar").toURL()});
+    	    ClassLoader loader2 = new URLClassLoader(new URL[] {new File("..\\ESv2\\target\\ESv2-0.0.1-SNAPSHOT.jar").toURL()});
+    
+    	    Class<?> c1 = loader1.loadClass("com.atul.esloader.ElasticSearchV1");
+    	    Class<?> c2 = loader2.loadClass("com.atul.esloader.ElasticSearchV2");
+    
+    	    ElasticSearchInterface es1 = (ElasticSearchInterface) c1.newInstance();
+    	    ElasticSearchInterface es2 = (ElasticSearchInterface) c2.newInstance();
+    
+    	    es1.search(null); // Queries ElasticSearch1.x
+    	    es2.search(null); // Queries ElasticSearch2.x
+    	}
 
-  * es1.search() // Queries ElasticSearch1.x
-  * es2.search() // Queries ElasticSearch2.x
+# Output
+
+    <ElasticsearchClassLoader\MainProject> java -cp ..\ESCommon\target\ESCommon-0.0.1-SNAPSHOT.jar;target\MainProject-0.0.1-SNAPSHOT.jar com.atul.esloader.MainClass
+    Connected to elasticsearch v1
+    Got 8 hits
+    
+    Connected to elasticsearch v2
+    Got 4 hits
