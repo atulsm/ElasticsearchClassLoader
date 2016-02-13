@@ -16,7 +16,7 @@ The purpose of this project is to demonstrate how an application can work with b
   * ElasticSearchV2 implements BaseInterface
 
 * How to execute the class:
-  * java -cp ESCommon.jar MainClass
+  * java -cp MainProject.jar;ESCommon.jar MainClass
   * //Do not put ESv1 nor ESv1 into the parent classloader classpath
 
 * MainClass Logic:
