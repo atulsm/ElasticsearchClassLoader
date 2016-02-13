@@ -10,10 +10,10 @@ The purpose of this project is to demonstrate how an application can work with b
   * ElasticSearchInterface
 
 * ESv1:
-  * ElasticSearchV1 implements BaseInterface
+  * ElasticSearchV1 implements ElasticSearchInterface
 
 * ESv2:
-  * ElasticSearchV2 implements BaseInterface
+  * ElasticSearchV2 implements ElasticSearchInterface
 
 * How to execute the class:
   * java -cp MainProject.jar;ESCommon.jar MainClass
