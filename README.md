@@ -17,7 +17,7 @@ The purpose of this project is to demonstrate how an application can work with b
 
 * How to execute the class:
   * java -cp MainProject.jar;ESCommon.jar MainClass
-  * //Do not put ESv1 nor ESv1 into the parent classloader classpath
+  * //Do not put ESv1 or ESv2 into the parent classloader classpath
 
 * MainClass Logic:
 
